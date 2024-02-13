@@ -6,6 +6,7 @@ const initialState = () => {
       allProduct: [],
       total: 0,
       price: 0,
+      amount:0,
     }
   );
 };
@@ -30,11 +31,11 @@ export const basketSlice = createSlice({
     },
     increment: (state, { payload }) => {
       const item = state.allProduct.find((item)=>item.id === payload.id)
-      item. +=1
+      item.amount += 1
     },
     decrement: (state, { payload }) => {
       const item = state.allProduct.find((item)=>item.id === payload.id)
-      item. -=1
+      item.amount -= 1
     },
     total: (state) => {
       let allPrice = 0;

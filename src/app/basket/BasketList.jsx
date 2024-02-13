@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, deleteToData } from "../redux/basketSlice";
 
 function BasketList() {
-  const { allProduct, total } = useSelector((store) => store.product);
+  const { allProduct, amount } = useSelector((store) => store.product);
   const dispatch = useDispatch();
 
   if (allProduct.length == 0) {
@@ -31,7 +31,7 @@ function BasketList() {
                   +
                 </button>
                 <button className="px-3 py-2 bg-[#E4E4E7] rounded-md">
-                  {total}
+                  -
                 </button>
                 <button
                   onClick={() => dispatch(decrement(item.id))}
