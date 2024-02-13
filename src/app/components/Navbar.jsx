@@ -1,29 +1,32 @@
 "use client";
-import { useState, useEffect } from "react";
-import { FaRegMoon, FaShoppingCart, FaSun } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const { total } = useSelector((store) => store.product);
   return (
     <div className="bg-slate-300 dark:bg-slate-800">
       <div className="max-container">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl dark:text-white">Next.js</h1>
-          <ul className="flex items-center gap-5">
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a href="">About</a>
-            </li>
-            <li>
-              <a href="">Contact</a>
-            </li>
-
-            <div className="indicator">
-              <span className="indicator-item badge badge-primary">0</span>
-              <FaShoppingCart className="text-2xl" />
+          <Link href="/" className="text-2xl dark:text-white cursor-pointer">
+            Next.js
+          </Link>
+          <div className="flex items-center justify-between gap-5">
+            <div className="flex items-center gap-5">
+              <div className="indicator">
+                <span className="indicator-item badge badge-primary">
+                  {total}
+                </span>
+                <Link href="/basket">
+                  <IoCartOutline className="text-3xl cursor-pointer" />
+                </Link>
+              </div>
+              {/* <div className="ml-2">
+               <button>Dark</button>
+              </div> */}
             </div>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
